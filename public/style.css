@@ -191,6 +191,8 @@ footer.foot .stroke{margin-bottom:26px}
   .fan{grid-template-columns:1fr}
   .cform{grid-template-columns:1fr;padding:20px}
   .workgrid{grid-template-columns:1fr 1fr}
+  .oddspan .work:last-child{grid-column:1/-1}
+  .oddspan .work:last-child img{height:210px}
   .work img{height:170px}
   .hero-copy{padding:38px 18px 44px}
   .callband .inner{flex-direction:column;align-items:flex-start}

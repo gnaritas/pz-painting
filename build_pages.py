@@ -221,7 +221,7 @@ index = head("Interior & Exterior House Painters — PZ Painting, Woodburn OR",
       <h2 id="work-h">The work speaks first</h2>
       <p>Photos from client projects — the crew’s own before-the-rebuild gallery, exteriors to cabinets.</p>
     </div>
-    <div class="workgrid">
+    <div class="workgrid oddspan">
       <figure class="work"><img src="/img/ext-ladder.webp" alt="Client exterior project — ladders set against a stone and siding two-story home" width="680" height="850"><span class="tag">Exterior</span></figure>
       <figure class="work"><img src="/img/ext-garage.webp" alt="Client exterior project — two-story home with garage" width="640" height="644"><span class="tag">Exterior</span></figure>
       <figure class="work"><img src="/img/kitchen.webp" alt="Client cabinet project — refinished kitchen cabinets with blue island" width="680" height="907"><span class="tag">Cabinets</span></figure>
