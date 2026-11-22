@@ -1,0 +1,25 @@
+{
+  "slug": "pz-painting",
+  "built": "2026-11-21",
+  "task": "t_811cd84b",
+  "target_site": "https://pzpainting.com (Wix, fixed 980px viewport)",
+  "facts": [
+    {"fact": "Business name: PZ Painting & Contracting, LLC", "source": "site header (pzpainting.com) + FB page title + GBP listing", "asof": "2026-11-21"},
+    {"fact": "Phone (503) 332-4596", "source": "site header/footer + FB about + GBP + HomeAdvisor listing (all agree)", "asof": "2026-11-21"},
+    {"fact": "Email info@pzpainting.com", "source": "site mailto link (home HTML)", "asof": "2026-11-21"},
+    {"fact": "Address 624 Church Street, Woodburn, OR 97071", "source": "site /privacy-policy copy (their own privacy policy, effective 2026-01-14) + CCB record (Woodburn, OR); postal code per their own copy. Note: GBP header shows no street address (SAB model); OSM parcel geocode of 624 Church St resolves to 97072 (PO-box zip) — owner-published 97071 kept on site", "asof": "2026-11-21"},
+    {"fact": "Geo 45.1472734,-122.8576420", "source": "Nominatim parcel result for 624 Church Street, Woodburn", "asof": "2026-11-21"},
+    {"fact": "Services: interior painting, exterior painting, cabinet painting + restoration, staining + sealing, gutter + roof servicing, finish carpentry, pressure washing, small commercial", "source": "site /services tiles", "asof": "2026-11-21"},
+    {"fact": "Copy: 'Clients can consistently expect a solid commitment to quality, strong work ethic, and punctuality. Our personalized options and wide range of prices cater to every budget.' + 'Your project is not over until you are 100% satisfied!' + 'We only mark up a product when it comes to labor to keep our customers happy!' + 'Support small | support local | support family owned' + 'Make it EZ - Go with PZ'", "source": "site services page + privacy policy copy", "asof": "2026-11-21"},
+    {"fact": "Oregon CCB License #226354; licensed, bonded & insured", "source": "FB about description + CCB registry mirrors (ccblookup.build 'Active' status 2026-11-14, ccbcontractors.info, buildzoom)", "asof": "2026-11-21"},
+    {"fact": "Service area Portland to Salem; work confirmed Portland/Happy Valley/Clackamas", "source": "FB about ('SERVICES FROM PORTLAND TO SALEM') + GBP reviews (Happy Valley, Portland-adjacent trim repair) + HomeAdvisor service area (Portland, Clackamas, Woodburn)", "asof": "2026-11-21"},
+    {"fact": "Owner first name Ramses (pitch mail only, not on site pages)", "source": "GBP review text + owner review replies ('RAMSES B.')", "asof": "2026-11-21"},
+    {"fact": "Google rating 5.0 (4 reviews); Facebook 100% recommend (11 reviews); price range $$; LGBTQ+ friendly", "source": "GBP listing header (browser-verified) + FB page header ('100 · 100% recommend')", "asof": "2026-11-21"},
+    {"fact": "Review quotes (Athena M., Berta A., Candice R.)", "source": "GBP reviews (browser text capture)", "asof": "2026-11-21"},
+    {"fact": "Photos: hero/ext-ladder/ext-garage/ext-row/kitchen/bedroom/hall/powerwash/gutter = client project + service-tile photos harvested from their own live site (wixstatic originals), re-encoded to webp, EXIF stripped", "source": "https://static.wixstatic.com/media/* via pzpainting.com gallery + service tile pages", "asof": "2026-11-21"},
+    {"fact": "Free quotes", "source": "site CTA 'FREE QUOTE' button", "asof": "2026-11-21"},
+    {"fact": "Omitted: opening hours (GBP and FB disagree, unresolved — no claim made)", "source": "GBP 'Closed now / Opens 7 AM' vs FB 'Open - Closes at 8:00 PM'", "asof": "2026-11-21"},
+    {"fact": "Omitted: year founded, job counts, price points, owner surname", "source": "not published on their materials", "asof": "2026-11-21"}
+  ],
+  "collision_check": "registry recount before send (see card); normalized keys pz-painting / pz painting & contracting / pzpainting"
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pz-painting-demo.up.railway.app/sitemap.xml

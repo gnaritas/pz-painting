@@ -1,0 +1,13 @@
+{
+  "name": "pz-painting-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PZ Painting & Contracting \u2014 residential & commercial painting, Woodburn OR. Template v2 T1 (2026-11-21, t_811cd84b).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
