@@ -24,7 +24,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 main>p+p,main>section>p+p{margin-top:14px}
 
 .wrap{max-width:1110px;margin:0 auto;padding:0 26px}
-.tape{height:12px;background:repeating-linear-gradient(45deg,var(--paper2),var(--paper2) 14px,var(--paper) 14px,var(--paper) 28px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(-.35deg);margin-left:-14px;margin-right:-14px}
+.tape{height:12px;background:repeating-linear-gradient(45deg,var(--paper2),var(--paper2) 14px,var(--paper) 14px,var(--paper) 28px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(-.35deg)}
 .stroke{height:6px;background:linear-gradient(90deg,var(--red-d),var(--red) 30%,var(--red-l) 55%,var(--red) 80%,var(--red-d));border-radius:2px}
 
 header.top{background:var(--card);border-bottom:1px solid var(--line)}
