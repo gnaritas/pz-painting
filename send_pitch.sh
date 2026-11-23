@@ -159,21 +159,31 @@ PYEOF
 )
 fi
 
-echo "== registry append + recount"
+echo "== registry append + recount (jsonl + lane.db events mirror)"
 python3 - "$MSGID" <<'PYEOF'
-import json, sys, datetime, os
+import json, sys, datetime, time, sqlite3
 msg_id=sys.argv[1]
 REG="/Users/rleon/.hermes/projects/websites/pitch_registry.jsonl"
+LANEDB="/Users/rleon/.hermes/projects/websites/lane.db"
+today=datetime.date.today()
+fu=(today+datetime.timedelta(days=10)).isoformat()
 row={"id": None, "slug": "pz-painting", "type": "pitch", "feed_id": "exp-evolutions",
+     "shop_id": "pzpainting.com",
      "aliases": ["pzpainting.com","PZ Painting & Contracting","PZ Painting","info@pzpainting.com"],
+     "business": "PZ Painting & Contracting (Woodburn OR)",
      "email": "info@pzpainting.com",
      "subject": "Your new website is live \u2014 PZ Painting & Contracting",
      "subject_arm": "v6", "cohort": "evolutions",
+     "preview": "https://pz-painting-demo.up.railway.app",
+     "card": "t_811cd84b",
      "utm_content": "pz-painting-t1",
      "pixel": True, "shot": False,
-     "followup_due": (datetime.date.today()+datetime.timedelta(days=10)).isoformat(),
+     "date": today.isoformat(),
+     "followup_due": fu,
+     "ladder": "t2 "+fu+" / t3 t2+7d / t4 t2+14d (weekday ladder, US-holiday shift); teardown recheck >= t2+20d",
      "ts": datetime.datetime.now().astimezone().isoformat(timespec="seconds"),
-     "msg_id": msg_id}
+     "msg_id": msg_id,
+     "note": "E1 evolutions rebuild pitch (junk-confirmed mobile-broken Wix ~980px site per 11-21 vision pass); phone-first demo; founder bundle $249+$39/mo 31d trial; read-back SENTCOPY_MATCH proof via send_pitch.sh"}
 import uuid
 row["id"]="pk-"+uuid.uuid4().hex[:12]
 with open(REG,"r") as f: existing=[json.loads(l) for l in f if l.strip()]
@@ -184,6 +194,18 @@ with open(REG,"a") as f: f.write(json.dumps(row, ensure_ascii=False)+"\n")
 after=[json.loads(l) for l in open(REG) if l.strip()]
 n=sum(1 for r in after if r.get("slug")=="pz-painting" and r.get("type")=="pitch")
 print("RECONCILE: pitch rows for slug:", n, "| registry total rows:", len(after))
+# lane.db events mirror row (canonical store per DATA RULE 2026-11-21)
+db=sqlite3.connect(LANEDB)
+have=db.execute("SELECT COUNT(*) FROM events WHERE type='pitch' AND slug='pz-painting'").fetchone()[0]
+if have:
+    print("EVENTS_GUARD_RACE: events pitch row already present"); sys.exit(1)
+line=db.execute("SELECT COALESCE(MAX(line),0)+1 FROM events").fetchone()[0]
+db.execute("INSERT INTO events (line,type,feed_id,shop_id,slug,business,email,msg_id,followup_due,date_txt,ts,note) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+  (line,"pitch","exp-evolutions","pzpainting.com","pz-painting","PZ Painting & Contracting (Woodburn OR)","info@pzpainting.com",msg_id,fu,today.isoformat(),int(time.time()),
+   "E1 evolutions rebuild pitch; junk-confirmed mobile-broken site (fixed ~980px); demo https://pz-painting-demo.up.railway.app; founder bundle $249+$39/mo 31d trial; v6 subject arm"))
+db.commit()
+npitch=db.execute("SELECT COUNT(*) FROM events WHERE type='pitch'").fetchone()[0]
+print("EVENT_ROW_OK line=", line, "| events pitch total:", npitch)
 print("SENT_OK msg_id="+msg_id)
 PYEOF
 [ $? -eq 0 ] || exit 6

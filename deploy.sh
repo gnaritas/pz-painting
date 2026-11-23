@@ -54,7 +54,7 @@ def get(p, method="GET", data=None):
     cmd=["curl","-s","-m","25","-X",method,"-w","\n%{http_code}"]
     if data: cmd+=["--data",data]
     cmd.append(DEMO+p)
-    r=subprocess.run(cmd,capture_output=True,text=True)
+    r=subprocess.run(cmd,capture_output=True,text=True,errors="ignore")
     body,code=r.stdout.rsplit("\n",1)
     return int(code),body
 routes=["/","/services","/exterior-painting","/interior-painting","/our-work","/contact","/privacy","/thanks","/sitemap.xml","/robots.txt","/favicon.svg","/style.css","/pixel.gif","/og.png","/nope"]
