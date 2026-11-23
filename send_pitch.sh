@@ -67,6 +67,20 @@ if errs:
 print(f"ASSERT PASS: core_words={wc} links=2 pixel-gates=ok")
 PYEOF
 
+echo "== reply check (never pitch into an owner reply — INBOX FROM recipient domain)"
+python3 - <<'PYEOF' || exit 7
+import imaplib, re, sys
+conf={}
+for line in open("/Users/rleon/.hermes/config/jarvis-email.conf"):
+    m=re.match(r'\s*([A-Z_]+)\s*=\s*"?([^"\s]+)"?', line)
+    if m: conf[m.group(1)]=m.group(2)
+M=imaplib.IMAP4_SSL(conf["IMAP_SERVER"]); M.login(conf["EMAIL"],conf["APP_PASSWORD"]); M.select('INBOX')
+typ,res=M.uid('search',None,'FROM','pzpainting.com')
+uids=[i.decode() for i in res[0].split()] if res and res[0] else []
+print("INBOX FROM pzpainting.com uids:", uids)
+sys.exit(2 if uids else 0)
+PYEOF
+
 echo "== recipient-window gate (Pacific = recipient tz; 07:00-17:00)"
 HR=$(TZ=America/Los_Angeles date +%H)
 [ "$HR" -ge 7 ] && [ "$HR" -lt 17 ] || { echo "OUTSIDE_WINDOW hr=$HR — do NOT send; re-park"; exit 4; }
